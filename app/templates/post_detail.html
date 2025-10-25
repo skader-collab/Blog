@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="post-detail-page">
+    <div class="container">
+        <div class="post-detail">
+            <h1 class="post-title">{{ post.title }}</h1>
+            <div class="post-meta">
+                <span class="post-date">{{ post.created_at|date:"F d, Y" }}</span>
+                <span class="post-author">by {{ post.author.get_full_name|default:post.author.username }}</span>
+            </div>
+            
+            {% if post.content_type == 'image' and post.image %}
+            <div class="post-image">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+
+            <div class="post-content">
+                {% if post.content %}
+                <p>{{ post.content }}</p>
+                {% endif %}
+            </div>
+
+            <div class="post-navigation">
+                <a href="{% url 'cyber:post_list' %}" class="back-to-posts">← Back to Posts</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

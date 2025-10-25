@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+   
+    <main class="contact-page">
+        <div class="container">
+            <section class="contact-section">
+                <h1 class="section-title">Get in Touch</h1>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        <div class="info-item">
+                            <i class="icon-location"></i>
+                            <p>72nd SKD Boulevard, Monrovia, Liberia.</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="icon-email"></i>
+                            <p>guardianciphers@gmail.com</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="icon-phone"></i>
+                            <p>+231-771-735-373/ +231-555-043-422</p>
+                        </div>
+                        <div class="social-links">
+                            <h3>Follow Us</h3>
+                            <div class="social-icons">
+                                <a href="https://wa.me/message/AXMIXKAT3RUQH1" class="social-icon whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://web.facebook.com/profile.php?id=61552022499705" class="social-icon facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://vm.tiktok.com/ZMHvFPL9VQhut-ovvwW/" class="social-icon tiktok">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://www.instagram.com/unisain_tech" class="social-icon instagram" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@ijack-231" class="social-icon youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h2>Send us a Message</h2>
+                        {% if success %}
+                        <div class="alert alert-success">
+                            Your message has been sent successfully! We'll get back to you soon.
+                        </div>
+                        {% endif %}
+                        <form id="contactForm" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><Address>72nd SKD Boulevard, Monrovia, Liberia.</Address><br>&copy; 2025 Hijack Guardian Ciphers. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+{% endblock %}
+</html>

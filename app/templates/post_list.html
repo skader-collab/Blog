@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="posts-page">
+    <div class="container">
+        <h1 class="page-title">Latest Blog Posts</h1>
+        <div class="posts-grid">
+            {% for post in page_obj %}
+            <div class="post-card">
+                {% if post.content_type == 'image' %}
+                <div class="post-image">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                </div>
+                {% endif %}
+                <div class="post-content">
+                    <h3 class="post-title">{{post.title}}</h3>
+                    {% if post.content %}
+                    <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
+                    {% endif %}
+                    <a href="{% url 'cyber:post_detail' post.pk %}" class="read-more">Read More →</a>
+                </div>
+                    <div class="post-meta">
+                        <span class="post-date">{{post.created_at|date:"M d, Y"}}</span>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if page_obj %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">← Previous</a>
+            {% endif %}
+            <span class="page-info">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next →</a>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="no-posts">
+            <p>No posts available at the moment.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

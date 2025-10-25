@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="goals" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="logo.jpeg">
+    <meta property="og:url" content="https://hijack" />
+    <meta property="og:description" content="Hijack Guardian Ciphers Protecting our community online — events, tools, and education" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Hijack Ciphers" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assert/style.css' %}">
+    <script src="{% static 'assert/script.js' %}"></script>
+    <title>Cipher blog</title>
+</head>
+<body>
+     <nav>
+    <div class="logo">
+      <a href="{% url 'cyber:home'%}"><img src="{% static './assert/images/logo.jpg'%}" alt="Hijack Guardian Ciphers Logo"></a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{% url 'cyber:home'%}">Home</a></li>
+      <li><a href="{% url 'cyber:about' %}">About</a></li>
+      <li><a href="{% url 'cyber:services' %}">Services</a></li>
+      <li><a href="{% url 'cyber:project' %}">Projects</a></li>
+      <li><a href="{% url 'cyber:contact' %}">Contact</a></li>
+    </ul>
+
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="{% url 'cyber:home'%}">Home</a>
+    <a href="{% url 'cyber:about' %}">About</a>
+    <a href="{% url 'cyber:services' %}">Services</a>
+    <a href="{% url 'cyber:project' %}">Projects</a>
+    <a href="{% url 'cyber:contact' %}">Contact</a>
+  </div>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<body>
+    <main class="projects-page">
+        <div class="container">
+            <section class="projects-hero">
+                <h1 class="section-title">Our Training Projects</h1>
+                <p class="section-description">Empowering Liberia's digital future through free cybersecurity education</p>
+            </section>
+
+            <section class="featured-training">
+                <div class="training-showcase">
+                    <div class="showcase-image">
+                        <img src="{% static 'assert/images/trainin1.jpg'%}" alt="Cybersecurity Training Session">
+                    </div>
+                    <div class="showcase-content">
+                        <h2>Free Cybersecurity Training Program</h2>
+                        <p>Our flagship initiative provides hands-on cybersecurity training to Liberian youth and professionals, completely free of charge. Through this program, we aim to build a strong foundation of cybersecurity expertise in our community.</p>
+                        <div class="training-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-users"></i>
+                                <span>Open to All</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certification Provided</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Practical Labs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="training-gallery">
+                <h2>Training Highlights</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="{% static 'assert/images/hall.jpg' %}" alt="Training Hall">
+                        <div class="gallery-overlay">
+                            <h3>Training Facilities</h3>
+                            <p>State-of-the-art training hall equipped with modern resources</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'assert/images/pic2.jpg' %}" alt="Hands-on Workshop">
+                        <div class="gallery-overlay">
+                            <h3>Practical Workshops</h3>
+                            <p>Interactive sessions with real-world scenarios</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'assert/images/prv.jpg'%}" alt="Privacy Training">
+                        <div class="gallery-overlay">
+                            <h3>Privacy Protection</h3>
+                            <p>Specialized training on data privacy and protection</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="training-programs">
+                <h2>Available Programs</h2>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Basic Cybersecurity</h3>
+                        <p>Introduction to fundamental cybersecurity concepts and best practices.</p>
+                        <ul class="program-details">
+                            <li><i class="fas fa-clock"></i> 4 Weeks</li>
+                            <li><i class="fas fa-users"></i> Beginners Welcome</li>
+                            <li><i class="fas fa-calendar"></i> Next Batch: Nov 2025</li>
+                        </ul>
+                        <a href="{% url 'cyber:contact'%}" class="btn-program">Coming Soon</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Secure Coding</h3>
+                        <p>Learn to write secure code and identify common vulnerabilities.</p>
+                        <ul class="program-details">
+                            <li><i class="fas fa-clock"></i> 6 Weeks</li>
+                            <li><i class="fas fa-code-branch"></i> Basic Coding Required</li>
+                            <li><i class="fas fa-calendar"></i> Next Batch: Dec 2025</li>
+                        </ul>
+                        <a href="{% url 'cyber:contact'%}" class="btn-program">Coming Soon</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>Privacy Protection</h3>
+                        <p>Advanced training in data privacy and protection methodologies.</p>
+                        <ul class="program-details">
+                            <li><i class="fas fa-clock"></i> 5 Weeks</li>
+                            <li><i class="fas fa-layer-group"></i> Intermediate Level</li>
+                            <li><i class="fas fa-calendar"></i> Next Batch: Jan 2026</li>
+                        </ul>
+                        <a href="{% url 'cyber:contact'%}" class="btn-program">Coming Soon</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="join-training">
+                <div class="join-content">
+                    <h2>Join Our Next Training Session</h2>
+                    <p>Take the first step towards a career in cybersecurity. Our training programs are completely free and designed to give you practical, real-world skills.</p>
+                    <a href="{% url 'cyber:contact'%}" class="btn-primary">Coming Soon</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+<p><Address>72nd SKD Boulevard, Monrovia, Liberia.</Address><br>&copy; 2025 Hijack Guardian Ciphers. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>

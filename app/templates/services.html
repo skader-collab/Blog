@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <main class="services-page">
+        <div class="container">
+            <section class="services-hero">
+                <h1 class="section-title">Our Services</h1>
+                <p class="section-description">Comprehensive cybersecurity solutions to protect your digital presence</p>
+            </section>
+
+            <section class="services-grid">
+                <!-- Phishing Protection -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Phishing Protection</h3>
+                    <p>Advanced scanning and detection of phishing attempts, protecting your personal and business data from fraudulent activities.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Real-time link scanning</li>
+                        <li><i class="fas fa-check"></i> Email security analysis</li>
+                        <li><i class="fas fa-check"></i> Domain verification</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy Tools -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Privacy Tools</h3>
+                    <p>Comprehensive suite of privacy tools to maintain your anonymity and protect your sensitive information online.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Secure VPN service</li>
+                        <li><i class="fas fa-check"></i> Data encryption</li>
+                        <li><i class="fas fa-check"></i> Privacy auditing</li>
+                    </ul>
+                </div>
+
+                <!-- Security Training -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Security Training</h3>
+                    <p>Educational programs and workshops to help individuals and organizations understand and implement better security practices.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Awareness workshops</li>
+                        <li><i class="fas fa-check"></i> Security best practices</li>
+                        <li><i class="fas fa-check"></i> Customized training</li>
+                    </ul>
+                </div>
+
+                <!-- Threat Analysis -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Threat Analysis</h3>
+                    <p>Comprehensive security assessment and continuous monitoring to identify and mitigate potential threats.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Vulnerability scanning</li>
+                        <li><i class="fas fa-check"></i> Risk assessment</li>
+                        <li><i class="fas fa-check"></i> Security reporting</li>
+                    </ul>
+                </div>
+
+                <!-- Incident Response -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Incident Response</h3>
+                    <p>Quick and effective response to security incidents with clear recovery procedures and future prevention strategies.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 24/7 support</li>
+                        <li><i class="fas fa-check"></i> Rapid response team</li>
+                        <li><i class="fas fa-check"></i> Incident analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Consulting Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Consulting Services</h3>
+                    <p>Expert guidance on implementing comprehensive security strategies tailored to your specific needs.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Security planning</li>
+                        <li><i class="fas fa-check"></i> Policy development</li>
+                        <li><i class="fas fa-check"></i> Compliance guidance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>Ready to Secure Your Digital Presence?</h2>
+                <p>Contact us today to discuss how we can help protect your organization</p>
+                <a href="{% url 'cyber:contact'%}" class="btn-primary">Get Started</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><Address>72nd SKD Boulevard, Monrovia, Liberia.</Address><br>&copy; 2025 Hijack Guardian Ciphers. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>

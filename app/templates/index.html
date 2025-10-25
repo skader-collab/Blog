@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content%}
+<body>
+ <div class="text-box"> 
+        <h1 class="head-primary">
+        <span class="head-primary-main">Welcome to</span>
+        <span class="head-primary-sub">Hijack Guardian Ciphers</span>
+        <p class="mission-statement">Protecting our community online — events, tools, and education.</p>
+    </h1>
+    <div class="button-group">
+        <a href="{% url 'cyber:contact' %}" class="btn btn-white">Get In Touch</a>
+        <a href="{% url 'cyber:post_list' %}" class="btn btn-action" style="background-color: aliceblue; margin: 5px;">Blog | News</a>
+    </div>
+    </div>
+        <main>
+        <!-- Homepage Sections -->
+        <section id="goals" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Current Goals</h2>
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <h3>Advanced Scanner Development</h3>
+                        <p>Raising funds to enhance our phishing detection capabilities with AI-powered scanning.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;">65%</div>
+                        </div>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Secure VPN Service</h3>
+                        <p>Building a reliable VPN infrastructure to protect our community's privacy online.</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 40%;">40%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="latest-events" class="section">
+            <div class="container">
+                <h2 class="section-title">Latest Events</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">Oct 25, 2025</div>
+                        <h3>Cybersecurity Workshop</h3>
+                        <p>Learn essential security practices and tools to protect yourself online.</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">Nov 5, 2025</div>
+                        <h3>Privacy Tools Showcase</h3>
+                        <p>Demonstration of our latest privacy protection tools and features.</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">Nov 15, 2025</div>
+                        <h3>Community Meetup</h3>
+                        <p>Join us for networking and discussions about cybersecurity.</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><Address>72nd SKD Boulevard, Monrovia, Liberia.</Address><br>&copy; 2025 Hijack Guardian Ciphers. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>
