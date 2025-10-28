@@ -1,7 +1,15 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Contact
 
 # Register your models here.
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'email', 'subject', 'message')
+    readonly_fields = ('created_at',)
+    ordering = ('-created_at',)
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'content_type', 'published', 'created_at')

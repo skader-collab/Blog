@@ -17,29 +17,37 @@
     <title>Cipher blog</title>
 </head>
 <body>
-     <nav>
-    <div class="logo">
-      <a href="{% url 'cyber:home'%}"><img src="{% static './assert/images/logo.jpg'%}" alt="Hijack Guardian Ciphers Logo"></a>
+     <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="{% url 'cyber:home'%}">
+                    <img src="{% static './assert/images/logo.jpg'%}" alt="Hijack Guardian Ciphers Logo">
+                </a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="{% url 'cyber:home'%}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'cyber:about' %}" class="nav-link">About</a></li>
+                <li><a href="{% url 'cyber:services' %}" class="nav-link">Services</a></li>
+                <li><a href="{% url 'cyber:project' %}" class="nav-link">Projects</a></li>
+                <li><a href="{% url 'cyber:contact' %}" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+                <span class="menu-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <div class="mobile-menu-container">
+            <a href="{% url 'cyber:home'%}" class="mobile-link">Home</a>
+            <a href="{% url 'cyber:about' %}" class="mobile-link">About</a>
+            <a href="{% url 'cyber:services' %}" class="mobile-link">Services</a>
+            <a href="{% url 'cyber:project' %}" class="mobile-link">Projects</a>
+            <a href="{% url 'cyber:contact' %}" class="mobile-link">Contact</a>
+        </div>
     </div>
-
-    <ul class="nav-links">
-      <li><a href="{% url 'cyber:home'%}">Home</a></li>
-      <li><a href="{% url 'cyber:about' %}">About</a></li>
-      <li><a href="{% url 'cyber:services' %}">Services</a></li>
-      <li><a href="{% url 'cyber:project' %}">Projects</a></li>
-      <li><a href="{% url 'cyber:contact' %}">Contact</a></li>
-    </ul>
-
-    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-  </nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="{% url 'cyber:home'%}">Home</a>
-    <a href="{% url 'cyber:about' %}">About</a>
-    <a href="{% url 'cyber:services' %}">Services</a>
-    <a href="{% url 'cyber:project' %}">Projects</a>
-    <a href="{% url 'cyber:contact' %}">Contact</a>
-  </div>
   {% block content %}
   {% endblock %}
 </body>

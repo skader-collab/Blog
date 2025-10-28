@@ -17,22 +17,32 @@ def services(request):
     return render(request, 'services.html')
 
 def contact(request):
+    context = {}
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
         
-        # Create a new contact message
-        Contact.objects.create(
-            name=name,
-            email=email,
-            subject=subject,
-            message=message
-        )
-        
-        return render(request, 'contact.html', {'success': True})
-    return render(request, 'contact.html')
+        if name and email and subject and message:
+            try:
+                # Create a new contact message
+                contact = Contact.objects.create(
+                    name=name,
+                    email=email,
+                    subject=subject,
+                    message=message
+                )
+                context['success'] = True
+                context['message'] = 'Your message has been sent successfully!'
+            except Exception as e:
+                context['error'] = True
+                context['message'] = 'There was an error sending your message. Please try again.'
+        else:
+            context['error'] = True
+            context['message'] = 'Please fill in all fields.'
+            
+    return render(request, 'contact.html', context)
 
 # Example view to display a list of posts with pagination
 def post_list(request):

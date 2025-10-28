@@ -46,7 +46,12 @@
                         <h2>Send us a Message</h2>
                         {% if success %}
                         <div class="alert alert-success">
-                            Your message has been sent successfully! We'll get back to you soon.
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% if error %}
+                        <div class="alert alert-error">
+                            {{ message }}
                         </div>
                         {% endif %}
                         <form id="contactForm" method="post">

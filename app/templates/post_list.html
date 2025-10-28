@@ -1,45 +1,63 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="posts-page">
+<main class="blog-listing">
     <div class="container">
-        <h1 class="page-title">Latest Blog Posts</h1>
-        <div class="posts-grid">
+        <h1 class="blog-title">Latest Blog Posts</h1>
+        <section class="post-list">
             {% for post in page_obj %}
-            <div class="post-card">
+            <article class="post-item">
                 {% if post.content_type == 'image' %}
-                <div class="post-image">
-                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                <div class="post-thumbnail">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" >
                 </div>
                 {% endif %}
                 <div class="post-content">
-                    <h3 class="post-title">{{post.title}}</h3>
+                    <header class="post-header">
+                        <h2 class="post-title">
+                            <a href="{% url 'cyber:post_detail' post.pk %}">{{post.title}}</a>
+                        </h2>
+                        <time class="post-date" datetime="{{post.created_at|date:'Y-m-d'}}">
+                            {{post.created_at|date:"M d, Y"}}
+                        </time>
+                    </header>
                     {% if post.content %}
-                    <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
-                    {% endif %}
-                    <a href="{% url 'cyber:post_detail' post.pk %}" class="read-more">Read More →</a>
-                </div>
-                    <div class="post-meta">
-                        <span class="post-date">{{post.created_at|date:"M d, Y"}}</span>
+                    <div class="post-excerpt">
+                        <p>{{ post.content|truncatewords:30 }}</p>
                     </div>
-            </div>
+                    {% endif %}
+                    <a href="{% url 'cyber:post_detail' post.pk %}" class="read-more" aria-label="Read more about {{post.title}}">
+                        Read More <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
             {% endfor %}
-        </div>
+        </section>
 
         {% if page_obj %}
-        <div class="pagination">
-            {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">← Previous</a>
-            {% endif %}
-            <span class="page-info">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next →</a>
-            {% endif %}
-        </div>
+        <nav class="pagination" aria-label="Blog navigation">
+            <div class="pagination-container">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link prev" rel="prev">
+                    <span aria-hidden="true">←</span> Previous
+                </a>
+                {% endif %}
+                
+                <span class="page-info" aria-current="page">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-link next" rel="next">
+                    Next <span aria-hidden="true">→</span>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
         {% else %}
         <div class="no-posts">
             <p>No posts available at the moment.</p>
         </div>
         {% endif %}
     </div>
-</div>
+</main>
 {% endblock %}

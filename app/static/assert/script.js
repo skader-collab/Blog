@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cache DOM elements
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  const header = document.querySelector('nav');
+  const header = document.querySelector('.main-nav');
+  const body = document.body;
+  const mobileLinks = document.querySelectorAll('.mobile-link');
   let isMenuOpen = false;
   let lastScrollPosition = 0;
   let scrollTimeout;
@@ -13,6 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
     isMenuOpen = !isMenuOpen;
     requestAnimationFrame(() => {
       mobileMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+      body.style.overflow = isMenuOpen ? 'hidden' : '';
+    });
+  });
+
+  // Close mobile menu when clicking a link
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      requestAnimationFrame(() => {
+        mobileMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        body.style.overflow = '';
+      });
     });
   });
 
@@ -26,13 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Optimize scroll performance
   function onScroll() {
     if (!scrollTimeout) {
       scrollTimeout = setTimeout(function() {
         const currentScroll = window.pageYOffset;
         
-        // Handle header visibility
         if (currentScroll > lastScrollPosition && currentScroll > 100) {
           requestAnimationFrame(() => {
             header.style.transform = 'translateY(-100%)';
@@ -49,10 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Throttle scroll event
+
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Handle window resize efficiently
   let resizeTimeout;
   window.addEventListener('resize', function() {
     if (!resizeTimeout) {
