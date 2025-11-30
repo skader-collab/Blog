@@ -9,6 +9,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+    /* default nav height used to offset fixed header + extra gap */
+    --nav-height: 96px;
+    --nav-gap: 20px; /* extra spacing between navbar and main content */
+}
+
 /* Optimize animations */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -240,6 +246,74 @@
     animation: buttonPulse 3s infinite;
 }
 
+/* Responsive rules for the homepage (index) */
+@media (max-width: 900px) {
+    .head-primary-main {
+        font-size: clamp(36px, 8vw, 48px);
+        letter-spacing: 12px;
+    }
+
+    .head-primary-sub {
+        font-size: clamp(16px, 4vw, 20px);
+        letter-spacing: 6px;
+    }
+
+    .text-box {
+        margin-top: calc(var(--nav-height) + 12px);
+        padding: 0 16px;
+    }
+
+    .button-group {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 12px 22px;
+        font-size: 0.95rem;
+    }
+
+    .mission-statement {
+        font-size: 1rem;
+    }
+
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .head-primary-main {
+        font-size: clamp(28px, 10vw, 36px);
+        letter-spacing: 6px;
+    }
+
+    .head-primary-sub {
+        font-size: clamp(14px, 5vw, 18px);
+        letter-spacing: 4px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 18px;
+        font-size: 0.95rem;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .text-box {
+        margin-top: calc(var(--nav-height) + 8px);
+    }
+}
+
 .btn-action:hover {
     background-color: #f0f0f0 !important;
     border-color: #f0f0f0 !important;
@@ -264,7 +338,8 @@
 
 /* Main Content Styles */
 main {
-    margin-top: 300px; /* Add space after the text-box */
+    /* keep content below fixed navbar with a small visual gap */
+    margin-top: calc(var(--nav-height) + var(--nav-gap));
 }
 
 .container {
@@ -488,8 +563,10 @@ main {
 
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px; /* Account for fixed header */
+    /* on small screens the header is shorter; reduce the offset */
+    :root {
+        --nav-height: 70px;
+        --nav-gap: 12px;
     }
 
     .nav-container {
@@ -1206,31 +1283,84 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
 }
-
 .team-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
     border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
 }
 
 .team-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* Image wrapper keeps image perfectly centered and cropped */
 .team-image {
-    width: 150px;
-    height: 150px;
+    /* flexible circular frame that visually overlaps the top of the card */
+    width: clamp(110px, 18vw, 150px);
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
-    margin: 0 auto 20px;
-    background-color: rgba(59, 157, 217, 0.2);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: rgba(59, 157, 217, 0.06);
+    flex: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    border: 2px solid rgba(255,255,255,0.04);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(-1 * clamp(55px, 9vw, 75px));
+}
+
+/* If the image is an <img> inside .team-image, ensure it covers the wrapper */
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Allow using background-image on the wrapper for static avatars */
+.team-image[data-bg] {
+    background-size: cover;
+    background-position: center center;
+}
+
+.team-card {
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+    border-radius: 15px;
+    padding: 18px 18px 28px; /* bottom padding for content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: visible;
+    position: relative; /* contain the absolutely-positioned avatar */
+    padding-top: calc(clamp(55px, 9vw, 75px) + 18px); /* space for overlapping avatar */
+    min-height: 320px;
 }
 
 .team-card h3 {
     color: #fff;
-    margin-bottom: 10px;
+    margin: 0;
+    margin-bottom: 6px;
+}
+
+.team-body {
+    text-align: center;
+    width: 100%;
 }
 
 .team-role {
@@ -1331,6 +1461,17 @@ main {
     color: #fff;
 }
 
+.team-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* small accent border for the circular frame (applies to wrapper) */
+.team-image {
+    border: 2px solid rgba(255,255,255,0.04);
+}
 @media (max-width: 768px) {
     .about-story {
         padding: 20px;

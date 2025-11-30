@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <body>
     <main class="about-page">
         <div class="container">
@@ -45,27 +46,35 @@
             <section class="team-section">
                 <h2>Our Expert Team</h2>
                 <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-image"></div>
-                        <h3>Unisain McCess</h3>
-                        <p class="team-role">Chief Security Officer</p>
-                        <p class="team-description">Former cybersecurity advisor to Fortune 500 companies with 15+ years of experience in threat analysis.</p>
-                        <div class="team-credentials">
-                            <span><i class="fas fa-certificate"></i> CISSP</span>
-                            <span><i class="fas fa-award"></i>University of Liberia</span>
+                    <article class="team-card">
+                        <figure class="team-image" aria-hidden="true">
+                            <img class="team-avatar" src="{% static 'assert/images/McCess.jpg' %}" alt="Mr. Unisain McCess"  decoding="async">
+                        </figure>
+                        <div class="team-body">
+                            <h3>Mr. Unisain McCess</h3>
+                            <p class="team-role">CEO &amp; Chief Security Officer</p>
+                            <p class="team-description">McCess holds multiple professional certifications in cybersecurity and IT, including Google Cybersecurity, IT Support, Networking, and Ethical Hacking, equipping him to lead Hijack Guardian Ciphers with expertise and confidence.</p>
+                            <div class="team-credentials">
+                                <span><i class="fas fa-certificate"></i> Cybersecurity Expert</span>
+                                <span><i class="fas fa-award"></i> University of Liberia</span>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="team-card">
-                        <div class="team-image"></div>
-                        <h3>Focus McCess</h3>
-                        <p class="team-role">Training Director</p>
-                        <p class="team-description">Specializes in cybersecurity education and awareness programs across West Africa.</p>
-                        <div class="team-credentials">
-                            <span><i class="fas fa-certificate"></i> CEH</span>
-                            <span><i class="fas fa-award"></i>CompTIA Security+</span>
+                    <article class="team-card">
+                        <figure class="team-image" aria-hidden="true">
+                            <img class="team-avatar" src="{% static 'assert/images/sekou.jpg' %}" alt="Sekou Skader Kamara"  decoding="async">
+                        </figure>
+                        <div class="team-body">
+                            <h3>Sekou Skader Kamara</h3>
+                            <p class="team-role">Training Director</p>
+                            <p class="team-description">Django developer and AI/Data Engineer focused on building real-world backend, machine learning, and cloud solutions. Passionate about training and practical innovation.</p>
+                            <div class="team-credentials">
+                                <span><i class="fas fa-certificate"></i> Fullstack | ML/AI Engineer | Cloud Practitioner</span>
+                                <span><i class="fas fa-award"></i> AIIST University</span>
+                            </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </section>
 

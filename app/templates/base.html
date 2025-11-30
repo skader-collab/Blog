@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="{% static 'assert/style.css' %}">
     <script src="{% static 'assert/script.js' %}"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
     <title>Cipher blog</title>
 </head>
 <body>
@@ -31,6 +42,7 @@
                 <li><a href="{% url 'cyber:services' %}" class="nav-link">Services</a></li>
                 <li><a href="{% url 'cyber:project' %}" class="nav-link">Projects</a></li>
                 <li><a href="{% url 'cyber:contact' %}" class="nav-link">Contact</a></li>
+                <li><a href="{% url 'cyber:phising' %}" class="nav-link">Scan Links</a></li>
             </ul>
 
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">

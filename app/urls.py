@@ -11,4 +11,5 @@ urlpatterns = [
     path('services', views.services, name='services'),
     path('posts/', views.post_list, name='post_list'),
     path('posts/<int:pk>/', views.post_detail, name='post_detail'),
+    path('phising', views.phishing, name='phising'),
 ]
