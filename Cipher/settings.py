@@ -35,10 +35,7 @@ if not SECRET_KEY:
     else:
         raise RuntimeError('The SECRET_KEY environment variable must be set in production')
 
-# Read `ALLOWED_HOSTS` from environment (comma-separated). If not set,
-# we'll fall back to defaults below. This avoids syntax errors from stray
-# literal lines and allows configuring hosts in production.
-ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h.strip()]
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h.strip()] or ['cyberguardian.up.railway.app', 'localhost', '127.0.0.1']
 
 # Database: use SQLite by default (you mentioned you're using sqlite3)
 DATABASES = {
@@ -119,7 +116,7 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ['cyberguardian.railway.app', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['cyberguardian.up.railway.app', 'localhost', '127.0.0.1']
 
 # Production security settings (toggleable via env vars)
 if not DEBUG:
